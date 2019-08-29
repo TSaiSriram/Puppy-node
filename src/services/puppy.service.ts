@@ -4,11 +4,7 @@ import db from "../models"
 
 const createPuppy = async (req: any): Promise<any> => {
     try {
-        const data = await db.Puppy.create({
-            puppy_age: req.puppy_age,
-            puppy_breed: req.puppy_breed,
-            description: req.description
-        });
+        const data = await db.Puppy.create(req);
         // console.log(data)
         return { status: true, data }
     } catch (error) {
@@ -27,6 +23,7 @@ const getPuppies = async () => {
 
 const updatePuppy = async (req: any) => {
     try {
+        console.log(req.body)
         const updated = await db.Puppy.update(req.body, { where: { puppy_id: req.params['id'] } })
         if (updated == 1)
             return { status: true, message: "sucessfully Updated" }
