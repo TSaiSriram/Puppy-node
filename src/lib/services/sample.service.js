@@ -4,7 +4,7 @@ var SampleService = /** @class */ (function () {
     function SampleService() {
         this.samples = [
             {
-                name: 'FourthOfAugust',
+                name: 'FourthOfAugust'
             }
         ];
     }
