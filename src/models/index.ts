@@ -19,13 +19,6 @@ const db = {
     Sequelize,
     Puppy: puppyModel(sequelize)
 }
-
-// Object.keys(db).forEach(modelName => {
-//     if (db[modelName].associate) {
-//         db[modelName].associate(db)
-//     }
-// })
-
 db.sequelize.sync()
 
 export default db
