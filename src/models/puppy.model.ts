@@ -25,7 +25,7 @@ export default (sequelize: Sequelize.Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false,
         }
-    }
+    };
 
 
 
@@ -37,7 +37,7 @@ export default (sequelize: Sequelize.Sequelize) => {
         timestamps: false,
         freezeTableName: true,
         tableName: "puppy-info"
-    })
+    });
 
     return Puppy;
 }

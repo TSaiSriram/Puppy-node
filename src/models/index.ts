@@ -1,8 +1,8 @@
 import Sequelize from 'sequelize'
 import puppyModel from "../models/puppy.model";
 
-const env = process.env.NODE_ENV || 'development'
-const config = require(__dirname + '/../../config/database.js')[env]
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../../config/database.js')[env];
 
 
 const _Sequelize: any = Sequelize;
@@ -12,7 +12,7 @@ export const sequelize = new _Sequelize(
     config.username,
     config.password,
     config
-)
+);
 
 const db = {
     sequelize,
