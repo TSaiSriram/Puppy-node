@@ -1,11 +1,36 @@
-
 import db from "../models"
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+    cloud_name: 'sriramstark',
+    api_key: '783451173383326',
+    api_secret: 'xIeynl8pUs84xQgGltb_2T4oc4A'
+});
 
 
-const createPuppy = async (req: any): Promise<any> => {
+const createPuppy = async (request: any): Promise<any> => {
     try {
-        const data = await db.Puppy.create(req);
-        return { status: true, data }
+
+        const file = request.file;
+        const req = request.body;
+
+
+
+        var image = await cloudinary.uploader.upload(file.path);
+
+        const imagePath = await image.secure_url
+        console.log(imagePath)
+        var createdPuppy = await db.Puppy.create({
+            puppy_age: req.age,
+            puppy_breed: req.breed,
+            puppy_image: imagePath,
+            description: req.description,
+        });
+        return { status: true, createdPuppy }
+
+
+        // console.log(data)
+
     } catch (error) {
         return { status: false, message: error }
     }
