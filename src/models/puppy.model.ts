@@ -1,6 +1,6 @@
 import * as Sequelize from 'sequelize'
 import { Puppy } from "../interfaces/puppy.interface"
-import { SequelizeAttributes } from "../interfaces/ISequelizeAttributes"
+import { SequelizeAttributes } from "../interfaces/ISequelizeAttributes";
 
 // const db_name = "puppy_adoption_service"
 // const sequelize = new Sequelize('mysql://root:dbpass@localhost:3306/' + db_name);
@@ -9,9 +9,10 @@ export default (sequelize: Sequelize.Sequelize) => {
 
     const attributes: SequelizeAttributes<Puppy> = {
         puppy_id: {
-            type: Sequelize.INTEGER, // you can omit the `new` but this is discouraged
-            autoIncrement: true,
-            primaryKey: true
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
         },
         puppy_age: {
             type: Sequelize.INTEGER,

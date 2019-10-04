@@ -1,35 +1,11 @@
 import db from "../models"
-const cloudinary = require('cloudinary').v2;
-
-cloudinary.config({
-    cloud_name: 'sriramstark',
-    api_key: '783451173383326',
-    api_secret: 'xIeynl8pUs84xQgGltb_2T4oc4A'
-});
+import { update_Puppy, del_Puppy } from "../interfaces/puppy.interface";
 
 
 const createPuppy = async (request: any): Promise<any> => {
     try {
-
-        const file = request.file;
-        const req = request.body;
-
-
-
-        var image = await cloudinary.uploader.upload(file.path);
-
-        const imagePath = await image.secure_url
-        console.log(imagePath)
-        var createdPuppy = await db.Puppy.create({
-            puppy_age: req.age,
-            puppy_breed: req.breed,
-            puppy_image: imagePath,
-            description: req.description,
-        });
+        const createdPuppy = await db.Puppy.create(request);
         return { status: true, createdPuppy }
-
-
-        // console.log(data)
 
     } catch (error) {
         return { status: false, message: error }
@@ -51,7 +27,7 @@ const updatePuppy = async (req: any) => {
         if (updated == 1)
             return { status: true, message: "sucessfully Updated" };
         else
-            return { status: true, message: "no change in record to update" }
+            return { status: false, message: "no change in record to update" }
     } catch (error) {
         return { status: false, message: error }
     }

@@ -1,4 +1,4 @@
-import Sequelize from 'sequelize'
+import Sequelize from 'sequelize';
 import puppyModel from "../models/puppy.model";
 
 const env = process.env.NODE_ENV || 'development';
