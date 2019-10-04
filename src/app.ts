@@ -1,7 +1,7 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
-import { Routes } from './routes/';        
+import { Routes } from './routes/';
 class App {
     public app: express.Application
     public routePrv: Routes = new Routes()
